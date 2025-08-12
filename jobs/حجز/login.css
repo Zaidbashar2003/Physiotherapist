@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: url('ced681d5a16920ebe7274c313ced4cedc4578ed2.jpg') no-repeat center center/cover;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+.navbar {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    padding: 10px 50px;
+    display: flex;
+    justify-content: flex-start;
+    direction: ltr;
+}
+
+.top-bar-button {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
+.login-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #1abc9c;
+}
+
+.login-box label {
+    display: block;
+    text-align: right;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-box button {
+    background: #00c12c;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-box button:hover {
+    background: #009f23;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-box button:active {
+    background: #00801a;
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.login-box .links {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-box .links a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.login-box .links a:hover {
+    color: #0056b3;
+}
