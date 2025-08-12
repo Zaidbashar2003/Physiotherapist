@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>احجز موعدك</title>
+  <link rel="stylesheet" href="reservation.css" />
+</head>
+<body>
+
+ <nav class="navbar">
+  <ul class="nav-links">
+    <li><a href="reservation.html">احجز</a></li>
+    <li><a href="index.html">الصفحة الرئيسية</a></li>
+    <li><a href="program.html">البرنامج العلاجي</a></li>
+    <li><a href="Contact.html">تواصل معنا</a></li>
+    <li><a href="about.html">عنّا</a></li>
+  </ul>
+  
+  <a href="profile.html" class="profile-icon" title="ملفي الشخصي">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+      stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-user">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+  </a>
+</nav>
+
+  <div class="container fade-in">
+    <h2>التخصصات :</h2>
+    <div class="specialties">
+      <div class="specialty" onclick="selectSpecialty(this)" data-name="استعداد">
+        <img src="a90d80fc0cbec5c331995edce89223bc161a365a.jpg" alt="استعداد" />
+        <p>استعداد</p>
+      </div>
+      <div class="specialty" onclick="selectSpecialty(this)" data-name="أعصاب">
+        <img src="b7d299e3097c84df7636a64c063b8de557192676.png" alt="أعصاب" />
+        <p>تأهيل شامل للجهاز العصبي</p>
+      </div>
+      <div class="specialty" onclick="selectSpecialty(this)" data-name="عناية">
+        <img src="fbd594ed8fce4c30d1d634e08147e899dd585c4d.jpg" alt="عناية" />
+        <p>تأهيل شامل للحالات الحرجة</p>
+      </div>
+      <div class="specialty" onclick="selectSpecialty(this)" data-name="صحة المرأة">
+        <img src="3bd42af7788937ed74b7e91382d934d6d02b4202.jpg" alt="صحة المرأة" />
+        <p>عناية حركية متخصصة للمرأة</p>
+      </div>
+      <div class="specialty" onclick="selectSpecialty(this)" data-name="أطفال">
+        <img src="ced681d5a16920ebe7274c313ced4cedc4578ed2.jpg" alt="أطفال" />
+        <p>دعم نمو الطفل حركيًا</p>
+      </div>
+    </div>
+
+    <input type="date" id="date" />
+    <input type="time" id="time" />
+    <input type="text" id="selectedSpecialty" placeholder="لم يتم اختيار تخصص" readonly />
+
+    <button onclick="bookAppointment()">احجز موعدك</button>
+  </div>
+
+  <div class="popup" id="successPopup">
+    <div class="popup-content">
+      <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="#00c200" viewBox="0 0 24 24"><path d="M10 15.172l7.293-7.293 1.414 1.414L10 18 5.293 13.293l1.414-1.414z"/></svg>
+      <h3>تم الحجز بنجاح</h3>
+      <button onclick="closePopup()">حسنًا</button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = () => {
+      document.body.classList.add('page-loaded');
+      document.querySelector('.container').classList.add('fade-in-show');
+    };
+
+    function selectSpecialty(element) {
+      const specialties = document.querySelectorAll('.specialty');
+      specialties.forEach(el => el.classList.remove('selected'));
+      element.classList.add('selected');
+      const name = element.getAttribute('data-name');
+      document.getElementById('selectedSpecialty').value = name;
+    }
+
+    function bookAppointment() {
+      const specialty = document.getElementById('selectedSpecialty').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      if (!specialty || !date || !time) {
+        alert("يرجى اختيار التخصص والتاريخ والوقت قبل الحجز.");
+        return;
+      }
+
+      document.getElementById('successPopup').classList.add('active');
+    }
+
+    function closePopup() {
+      document.getElementById('successPopup').classList.remove('active');
+      document.getElementById('selectedSpecialty').value = '';
+      document.getElementById('date').value = '';
+      document.getElementById('time').value = '';
+      document.querySelectorAll('.specialty').forEach(el => el.classList.remove('selected'));
+    }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      navLinks.forEach((link) => {
+        const href = link.getAttribute("href").split("/").pop();
+        if (href === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
