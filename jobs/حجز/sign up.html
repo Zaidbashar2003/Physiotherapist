@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إنشاء حساب</title>
+  <link rel="stylesheet" href="sign up.css" />
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#" class="top-bar-button" onclick="goToReservation()">احجز</a>
+  </div>
+
+  <div class="container">
+    <div class="register-box">
+      <h2>إنشاء حساب</h2>
+      <form id="signup-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" required placeholder="ادخل اسمك" />
+          </div>
+          <div class="form-group">
+            <label for="id-number">الرقم القومي</label>
+            <input type="number" id="id-number" required placeholder="ادخل رقمك القومي" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="age">السن</label>
+            <input type="number" id="age" required placeholder="ادخل سنك" />
+          </div>
+          <div class="form-group">
+            <label for="phone">رقم الهاتف</label>
+            <input type="number" id="phone" required placeholder="ادخل رقم الهاتف" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">الايميل</label>
+            <input type="email" id="email" required placeholder="ادخل الايميل الخاص بك" />
+          </div>
+          <div class="form-group">
+            <label for="password">الرقم السري</label>
+            <input type="password" id="password" required placeholder="ادخل رقمك السري" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group single-password-field">
+            <label for="confirm-password">تأكيد الرقم السري</label>
+            <input type="password" id="confirm-password" required placeholder="أعد كتابة الرقم السري" />
+          </div>
+        </div>
+
+        <button type="submit" class="create-account-button">إنشاء حساب</button>
+      </form>
+
+      <a href="login.html" class="login-redirect-button">لدي حساب</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('fade-in');
+    });
+
+    document.getElementById("signup-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm-password").value;
+
+      if (password !== confirm) {
+        alert("كلمة المرور غير متطابقة!");
+        return;
+      }
+
+      localStorage.setItem("registeredEmail", email);
+      localStorage.setItem("registeredPassword", password);
+      localStorage.setItem("loggedIn", "true");
+
+      alert("تم إنشاء الحساب بنجاح!");
+      window.location.href = "reservation.html";
+    });
+
+    function goToReservation() {
+      const isLoggedIn = localStorage.getItem("loggedIn");
+      if (isLoggedIn === "true") {
+        window.location.href = "reservation.html";
+      } else {
+        alert("يرجى تسجيل الدخول أولاً.");
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
